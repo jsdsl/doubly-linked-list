@@ -1,32 +1,41 @@
 {
-	"name": "repo-name",
-	"version": "0.1.0",
-	"description": "Project description here.",
+	"name": "@jsdsl/doubly-linked-list",
+	"version": "0.1.1",
+	"description": "A full-featured doubly-linked list implementation.",
+	"publishConfig": {
+		"access": "public"
+	},
 	"main": "js/main",
 	"types": ".d.ts/main",
 	"files": [
-		".d.ts/**",
-		"js/**",
-		"ts/**",
+		".d.ts/main.d.ts",
+		".d.ts/doubly-linked-list.d.ts",
+		".d.ts/doubly-linked-list-node.d.ts",
+		"js/main.*",
+		"js/doubly-linked-list.*",
+		"js/doubly-linked-list-node.*",
+		"ts/main.ts",
+		"ts/doubly-linked-list.ts",
+		"ts/doubly-linked-list-node.ts",
 		"license.md",
 		"package.json",
 		"readme.md"
 	],
 	"scripts": {
-		"build": "gulp && jest",
-		"test": "jest"
+		"build": "gulp rebuild",
+		"test": "gulp rebuild && jest"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/T99/repo-name.git"
+		"url": "git+https://github.com/jsdsl/doubly-linked-list.git"
 	},
 	"keywords": [],
 	"author": "Trevor Sears <trevorsears.main@gmail.com> (http://trevorsears.io/)",
 	"license": "GPL-3.0-or-later",
 	"bugs": {
-		"url": "https://github.com/T99/repo-name/issues"
+		"url": "https://github.com/jsdsl/doubly-linked-list/issues"
 	},
-	"homepage": "https://github.com/T99/repo-name#readme",
+	"homepage": "https://github.com/jsdsl/doubly-linked-list#readme",
 	"devDependencies": {
 		"typescript": "latest",
 		"@types/jest": "latest",
@@ -36,5 +45,9 @@
 		"gulp-typescript": "latest",
 		"gulp-uglify-es": "latest",
 		"jest": "latest"
+	},
+	"dependencies": {
+		"@jsdsl/abstract-list": "^0.3.0",
+		"iter-over": "^1.2.0"
 	}
 }
