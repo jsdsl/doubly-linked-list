@@ -7,20 +7,6 @@
 	},
 	"main": "js/main",
 	"types": ".d.ts/main",
-	"files": [
-		".d.ts/main.d.ts",
-		".d.ts/doubly-linked-list.d.ts",
-		".d.ts/doubly-linked-list-node.d.ts",
-		"js/main.*",
-		"js/doubly-linked-list.*",
-		"js/doubly-linked-list-node.*",
-		"ts/main.ts",
-		"ts/doubly-linked-list.ts",
-		"ts/doubly-linked-list-node.ts",
-		"license.md",
-		"package.json",
-		"readme.md"
-	],
 	"scripts": {
 		"build": "gulp rebuild",
 		"test": "gulp rebuild && jest"
@@ -29,7 +15,11 @@
 		"type": "git",
 		"url": "git+https://github.com/jsdsl/doubly-linked-list.git"
 	},
-	"keywords": [],
+	"keywords": [
+		"adt",
+		"data-structure",
+		"doubly-linked-list"
+	],
 	"author": "Trevor Sears <trevorsears.main@gmail.com> (http://trevorsears.io/)",
 	"license": "GPL-3.0-or-later",
 	"bugs": {
