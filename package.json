@@ -1,6 +1,6 @@
 {
 	"name": "@jsdsl/doubly-linked-list",
-	"version": "0.1.1",
+	"version": "0.2.0",
 	"description": "A full-featured doubly-linked list implementation.",
 	"publishConfig": {
 		"access": "public"
@@ -39,7 +39,7 @@
 		"jest": "latest"
 	},
 	"dependencies": {
-		"@jsdsl/abstract-list": "^0.3.0",
+		"@jsdsl/abstract-list": "^0.4.0",
 		"iter-over": "^1.2.0"
 	}
 }

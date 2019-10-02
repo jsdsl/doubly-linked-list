@@ -1,2 +1,52 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});class DoublyLinkedListNode{constructor(e,t,o,i){this.content=e,this.parentList=t,this.previous=o,this.next=i}getElement(){if(null!==this.content)return this.content;{let e=this.hasPreviousNode()?"epilogue":"prologue";throw new Error("ERR | Attempted to retrieve null content out of a DoublyLinkedListNode ("+e+" node).")}}getParentList(){return this.parentList}hasPreviousNode(){return void 0!==this.previous}getPreviousNode(){if(this.hasPreviousNode())return this.previous;throw new Error("ERR | Attempted to retrieve the previous node of a DoublyLinkedListNode that did not have a prior sibling.")}setPreviousNode(e){let t=this.previous;return this.previous=e,t}hasNextNode(){return void 0!==this.next}getNextNode(){if(this.hasNextNode())return this.next;throw new Error("ERR | Attempted to retrieve the next node of a DoublyLinkedListNode that did not have a successive sibling.")}setNextNode(e){let t=this.next;return this.next=e,t}}exports.DoublyLinkedListNode=DoublyLinkedListNode;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+class DoublyLinkedListNode {
+    constructor(content, parentList, previousNode, nextNode) {
+        this.content = content;
+        this.parentList = parentList;
+        this.previous = previousNode;
+        this.next = nextNode;
+    }
+    getElement() {
+        if (this.content !== null)
+            return this.content;
+        else {
+            let name = (this.hasPreviousNode() ? "epilogue" : "prologue");
+            throw new Error("ERR | Attempted to retrieve null content out of a DoublyLinkedListNode (" + name +
+                " node).");
+        }
+    }
+    getParentList() {
+        return this.parentList;
+    }
+    hasPreviousNode() {
+        return (this.previous !== undefined);
+    }
+    getPreviousNode() {
+        if (!this.hasPreviousNode())
+            return undefined;
+        else
+            return this.previous;
+    }
+    setPreviousNode(previousNode) {
+        let displaced = this.previous;
+        this.previous = previousNode;
+        return displaced;
+    }
+    hasNextNode() {
+        return (this.next !== undefined);
+    }
+    getNextNode() {
+        if (!this.hasNextNode())
+            return undefined;
+        else
+            return this.next;
+    }
+    setNextNode(nextNode) {
+        let displaced = this.next;
+        this.next = nextNode;
+        return displaced;
+    }
+}
+exports.DoublyLinkedListNode = DoublyLinkedListNode;
 //# sourceMappingURL=doubly-linked-list-node.js.map

@@ -8,9 +8,9 @@ export declare class DoublyLinkedListNode<E> {
     getElement(): E;
     getParentList(): DoublyLinkedList<E>;
     hasPreviousNode(): boolean;
-    getPreviousNode(): DoublyLinkedListNode<E>;
+    getPreviousNode(): DoublyLinkedListNode<E> | undefined;
     setPreviousNode(previousNode: DoublyLinkedListNode<E> | undefined): DoublyLinkedListNode<E> | undefined;
     hasNextNode(): boolean;
-    getNextNode(): DoublyLinkedListNode<E>;
+    getNextNode(): DoublyLinkedListNode<E> | undefined;
     setNextNode(nextNode: DoublyLinkedListNode<E> | undefined): DoublyLinkedListNode<E> | undefined;
 }

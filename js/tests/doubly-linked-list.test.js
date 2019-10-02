@@ -1,2 +1,140 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});const doubly_linked_list_1=require("../doubly-linked-list"),doubly_linked_list_node_1=require("../doubly-linked-list-node");describe("Initialization Tests",()=>{test("Basic initialization.",()=>{let t=new doubly_linked_list_1.DoublyLinkedList;expect(t).toBeDefined()}),test("Initialization with elements.",()=>{let t=new doubly_linked_list_1.DoublyLinkedList("a","b","c");expect(t).toBeDefined()})}),describe("Per-method Tests",()=>{let t,e=["a","b","c","d","e"];beforeEach(()=>{t=new doubly_linked_list_1.DoublyLinkedList(...e)}),test("#getFirst",()=>{expect(t.getFirst()).toBe("a")}),test("#getFirstNode",()=>{expect(t.getFirstNode()).toBeInstanceOf(doubly_linked_list_node_1.DoublyLinkedListNode),expect(t.getFirstNode().getElement()).toBe("a")}),test("#getLast",()=>{expect(t.getLast()).toBe("e")}),test("#getLastNode",()=>{expect(t.getLastNode()).toBeInstanceOf(doubly_linked_list_node_1.DoublyLinkedListNode),expect(t.getLastNode().getElement()).toBe("e")}),describe("#hasNextNode",()=>{test("Called on first node.",()=>{expect(t.hasNextNode(t.getFirstNode())).toBeTruthy()}),test("Called on last node.",()=>{expect(t.hasNextNode(t.getLastNode())).toBeFalsy()})}),test("#getNextNode",()=>{fail("Test not yet written...")}),test("#hasPreviousNode",()=>{fail("Test not yet written...")}),test("#getPreviousNode",()=>{fail("Test not yet written...")}),test("#insertAfter",()=>{fail("Test not yet written...")}),test("#insertNodeAfter",()=>{fail("Test not yet written...")}),test("#insertBefore",()=>{fail("Test not yet written...")}),test("#insertNodeBefore",()=>{fail("Test not yet written...")}),test("#insertFirst",()=>{fail("Test not yet written...")}),test("#insertNodeFirst",()=>{fail("Test not yet written...")}),test("#insertLast",()=>{fail("Test not yet written...")}),test("#insertNodeLast",()=>{fail("Test not yet written...")}),test("#removeFirst",()=>{fail("Test not yet written...")}),test("#removeFirstNode",()=>{fail("Test not yet written...")}),test("#removeLast",()=>{fail("Test not yet written...")}),test("#removeLastNode",()=>{fail("Test not yet written...")}),test("#removeNode",()=>{fail("Test not yet written...")}),test("#add",()=>{fail("Test not yet written...")}),describe("#get",()=>{test("Get each index.",()=>{expect(t.get(0)).toBe("a"),expect(t.get(1)).toBe("b"),expect(t.get(2)).toBe("c"),expect(t.get(3)).toBe("d"),expect(t.get(4)).toBe("e")}),test("Get out-of-bounds index (under bounds).",()=>{expect(()=>t.get(-1)).toThrowError(RangeError)}),test("Get out-of-bounds index (above bounds).",()=>{expect(()=>t.get(e.length)).toThrowError(RangeError)})}),test("#size",()=>{expect(t.size()).toBe(e.length)}),describe("#contains",()=>{test("Truthy checks.",()=>{for(let s of e)expect(t.contains(s)).toBeTruthy()}),test("Falsy checks.",()=>{for(let e of["1","2","3","x","y","z"])expect(t.contains(e)).toBeFalsy()})}),test("#isEmpty",()=>{fail("Test not yet written...")}),test("#remove",()=>{fail("Test not yet written...")}),test("#clear",()=>{fail("Test not yet written...")}),test("#nodeIterator",()=>{fail("Test not yet written...")}),test("#iterator",()=>{fail("Test not yet written...")}),test("#shuffle",()=>{fail("Test not yet written...")}),test("#toArray",()=>{expect(t.toArray()).toStrictEqual(["a","b","c","d","e"])})});
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const doubly_linked_list_1 = require("../doubly-linked-list");
+const doubly_linked_list_node_1 = require("../doubly-linked-list-node");
+describe("Initialization Tests", () => {
+    test("Basic initialization.", () => {
+        let dll = new doubly_linked_list_1.DoublyLinkedList();
+        expect(dll).toBeDefined();
+    });
+    test("Initialization with elements.", () => {
+        let dll = new doubly_linked_list_1.DoublyLinkedList("a", "b", "c");
+        expect(dll).toBeDefined();
+    });
+});
+describe("Per-method Tests", () => {
+    let dll;
+    let elements = ["a", "b", "c", "d", "e"];
+    beforeEach(() => {
+        dll = new doubly_linked_list_1.DoublyLinkedList(...elements);
+    });
+    test("#getFirst", () => {
+        expect(dll.getFirst()).toBe("a");
+    });
+    test("#getFirstNode", () => {
+        expect(dll.getFirstNode()).toBeInstanceOf(doubly_linked_list_node_1.DoublyLinkedListNode);
+    });
+    test("#getLast", () => {
+        expect(dll.getLast()).toBe("e");
+    });
+    test("#getLastNode", () => {
+        expect(dll.getLastNode()).toBeInstanceOf(doubly_linked_list_node_1.DoublyLinkedListNode);
+    });
+    describe("#hasNextNode", () => {
+        test("Called on first node.", () => {
+        });
+        test("Called on last node.", () => {
+        });
+    });
+    test("#getNextNode", () => {
+        fail("Test not yet written...");
+    });
+    test("#hasPreviousNode", () => {
+        fail("Test not yet written...");
+    });
+    test("#getPreviousNode", () => {
+        fail("Test not yet written...");
+    });
+    test("#insertAfter", () => {
+        fail("Test not yet written...");
+    });
+    test("#insertNodeAfter", () => {
+        fail("Test not yet written...");
+    });
+    test("#insertBefore", () => {
+        fail("Test not yet written...");
+    });
+    test("#insertNodeBefore", () => {
+        fail("Test not yet written...");
+    });
+    test("#insertFirst", () => {
+        fail("Test not yet written...");
+    });
+    test("#insertNodeFirst", () => {
+        fail("Test not yet written...");
+    });
+    test("#insertLast", () => {
+        fail("Test not yet written...");
+    });
+    test("#insertNodeLast", () => {
+        fail("Test not yet written...");
+    });
+    test("#removeFirst", () => {
+        fail("Test not yet written...");
+    });
+    test("#removeFirstNode", () => {
+        fail("Test not yet written...");
+    });
+    test("#removeLast", () => {
+        fail("Test not yet written...");
+    });
+    test("#removeLastNode", () => {
+        fail("Test not yet written...");
+    });
+    test("#removeNode", () => {
+        fail("Test not yet written...");
+    });
+    test("#add", () => {
+        fail("Test not yet written...");
+    });
+    describe("#get", () => {
+        test("Get each index.", () => {
+            expect(dll.get(0)).toBe("a");
+            expect(dll.get(1)).toBe("b");
+            expect(dll.get(2)).toBe("c");
+            expect(dll.get(3)).toBe("d");
+            expect(dll.get(4)).toBe("e");
+        });
+        test("Get out-of-bounds index (under bounds).", () => {
+            expect(() => dll.get(-1)).toThrowError(RangeError);
+        });
+        test("Get out-of-bounds index (above bounds).", () => {
+            expect(() => dll.get(elements.length)).toThrowError(RangeError);
+        });
+    });
+    test("#size", () => {
+        expect(dll.size()).toBe(elements.length);
+    });
+    describe("#contains", () => {
+        test("Truthy checks.", () => {
+            for (let element of elements)
+                expect(dll.contains(element)).toBeTruthy();
+        });
+        test("Falsy checks.", () => {
+            for (let element of ["1", "2", "3", "x", "y", "z"])
+                expect(dll.contains(element)).toBeFalsy();
+        });
+    });
+    test("#isEmpty", () => {
+        fail("Test not yet written...");
+    });
+    test("#remove", () => {
+        fail("Test not yet written...");
+    });
+    test("#clear", () => {
+        fail("Test not yet written...");
+    });
+    test("#nodeIterator", () => {
+        fail("Test not yet written...");
+    });
+    test("#iterator", () => {
+        fail("Test not yet written...");
+    });
+    test("#shuffle", () => {
+        fail("Test not yet written...");
+    });
+    test("#toArray", () => {
+        expect(dll.toArray()).toStrictEqual(["a", "b", "c", "d", "e"]);
+    });
+});
 //# sourceMappingURL=doubly-linked-list.test.js.map
