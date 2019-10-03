@@ -9,3 +9,4 @@ ts/tslint.json
 .npmignore
 gulpfile.js
 jest.config.js
+img/
