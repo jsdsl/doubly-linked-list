@@ -7,6 +7,7 @@
 import { AbstractList } from "@jsdsl/abstract-list";
 import { DoublyLinkedListNode } from "./doubly-linked-list-node";
 import { AbstractIterator } from "iter-over";
+import { IDoublyLinkedList } from "./i-doubly-linked-list";
 
 /**
  * A list-type data structure consisting of an ordered collection of nodes that rely on node-to-node linkages to
@@ -16,7 +17,7 @@ import { AbstractIterator } from "iter-over";
  * @version v0.2.0
  * @since v0.1.0
  */
-export class DoublyLinkedList<E = any> extends AbstractList<E> {
+export class DoublyLinkedList<E = any> extends AbstractList<E> implements IDoublyLinkedList<E> {
 	
 	/**
 	 * The 'prologue' node of this list - the node that occurs before all other nodes.
@@ -140,11 +141,6 @@ export class DoublyLinkedList<E = any> extends AbstractList<E> {
 		
 	}
 	
-	/**
-	 * Returns the first element in this list, or undefined if this list is empty.
-	 * 
-	 * @return The first element in this list, or undefined if this list is empty.
-	 */
 	public getFirst(): E | undefined {
 		
 		if (this.isEmpty()) return undefined;
@@ -152,22 +148,12 @@ export class DoublyLinkedList<E = any> extends AbstractList<E> {
 		
 	}
 	
-	/**
-	 * Returns the first node in this list, or undefined if this list is empty.
-	 *
-	 * @return The first node in this list, or undefined if this list is empty.
-	 */
 	public getFirstNode(): DoublyLinkedListNode<E> | undefined {
 		
 		return this.getPrologueNode().getNextNode();
 		
 	}
 	
-	/**
-	 * Returns the last element in this list, or undefined if this list is empty.
-	 *
-	 * @return The last element in this list, or undefined if this list is empty.
-	 */
 	public getLast(): E | undefined {
 		
 		if (this.isEmpty()) return undefined;
@@ -175,11 +161,6 @@ export class DoublyLinkedList<E = any> extends AbstractList<E> {
 		
 	}
 	
-	/**
-	 * Returns the last node in this list, or undefined if this list is empty.
-	 *
-	 * @return The last node in this list, or undefined if this list is empty.
-	 */
 	public getLastNode(): DoublyLinkedListNode<E> | undefined {
 		
 		if (this.isEmpty()) return undefined;
@@ -187,14 +168,6 @@ export class DoublyLinkedList<E = any> extends AbstractList<E> {
 		
 	}
 	
-	/**
-	 * Returns true if the provided node has a successive node.
-	 * 
-	 * This method will throw an error if an attempt is made to use a node that does belong to this list.
-	 * 
-	 * @param node The node for which to check for a successive node.
-	 * @return true if the provided node has a successive node.
-	 */
 	public hasNextNode(node: DoublyLinkedListNode<E>): boolean {
 		
 		if (node.getParentList() === this) {
@@ -211,15 +184,6 @@ export class DoublyLinkedList<E = any> extends AbstractList<E> {
 		
 	}
 	
-	/**
-	 * Returns the successive node of the provided node, or undefined if the provided node has no successive sibling.
-	 * 
-	 * This method will throw an error if an attempt is made to use a node that does belong to this list. 
-	 * 
-	 * @param node The node for which to retrieve a successive node.
-	 * @return The successive node of the provided node, or undefined if the provided node has no successive sibling.
-	 * @see DoublyLinkedList#hasNextNode
-	 */
 	public getNextNode(node: DoublyLinkedListNode<E>): DoublyLinkedListNode<E> | undefined {
 		
 		if (!this.hasNextNode(node)) return undefined;
@@ -227,14 +191,6 @@ export class DoublyLinkedList<E = any> extends AbstractList<E> {
 		
 	}
 	
-	/**
-	 * Returns true if the provided node has a preceding node.
-	 *
-	 * This method will throw an error if an attempt is made to use a node that does belong to this list.
-	 * 
-	 * @param node The node for which to check for a preceding node.
-	 * @return true if the provided node has a preceding node.
-	 */
 	public hasPreviousNode(node: DoublyLinkedListNode<E>): boolean {
 		
 		if (node.getParentList() === this) {
@@ -251,15 +207,6 @@ export class DoublyLinkedList<E = any> extends AbstractList<E> {
 		
 	}
 	
-	/**
-	 * Returns the preceding node of the provided node, or undefined if the provided node has no preceding sibling.
-	 *
-	 * This method will throw an error if an attempt is made to use a node that does belong to this list.
-	 * 
-	 * @param node The node for which to retrieve a preceding node.
-	 * @return The preceding node of the provided node, or undefined if the provided node has no preceding sibling.
-	 * @see DoublyLinkedList#hasPreviousNode
-	 */
 	public getPreviousNode(node: DoublyLinkedListNode<E>): DoublyLinkedListNode<E> | undefined {
 		
 		if (!this.hasPreviousNode(node)) return undefined;
@@ -267,16 +214,6 @@ export class DoublyLinkedList<E = any> extends AbstractList<E> {
 		
 	}
 	
-	/**
-	 * Creates a new node with the provided content and inserts it after the provided node, returning the newly created
-	 * node.
-	 * 
-	 * This method will throw an error if an attempt is made to use a node that does belong to this list.
-	 * 
-	 * @param element The content that the newly created node should contain.
-	 * @param node The node after which the newly created node should be inserted.
-	 * @return The newly created node.
-	 */
 	public insertAfter(element: E, node: DoublyLinkedListNode<E>): DoublyLinkedListNode<E> {
 		
 		if (node.getParentList() !== this) {
@@ -292,15 +229,6 @@ export class DoublyLinkedList<E = any> extends AbstractList<E> {
 		
 	}
 	
-	/**
-	 * Inserts the provided node after the specified preceding node, returning the node that was inserted.
-	 * 
-	 * This method will throw an error if an attempt is made to use a node that does belong to this list.
-	 * 
-	 * @param node The node that, after this operation, will be situated after the specified preceding node.
-	 * @param afterNode The node after which the provided node will be inserted.
-	 * @return The inserted node.
-	 */
 	public insertNodeAfter(node: DoublyLinkedListNode<E>, afterNode: DoublyLinkedListNode<E>): DoublyLinkedListNode<E> {
 		
 		if (afterNode.getParentList() !== this) {
@@ -316,16 +244,6 @@ export class DoublyLinkedList<E = any> extends AbstractList<E> {
 		
 	}
 	
-	/**
-	 * Creates a new node with the provided content and inserts it before the provided node, returning the newly created
-	 * node.
-	 * 
-	 * This method will throw an error if an attempt is made to use a node that does belong to this list.
-	 * 
-	 * @param element The content that the newly created node should contain.
-	 * @param node The node before which the newly created node should be inserted.
-	 * @return The newly created node.
-	 */
 	public insertBefore(element: E, node: DoublyLinkedListNode<E>): DoublyLinkedListNode<E> {
 		
 		if (node.getParentList() !== this) {
@@ -341,15 +259,6 @@ export class DoublyLinkedList<E = any> extends AbstractList<E> {
 		
 	}
 	
-	/**
-	 * Inserts the provided node before the specified succeeding node, returning the node that was inserted.
-	 * 
-	 * This method will throw an error if an attempt is made to use a node that does belong to this list.
-	 * 
-	 * @param node The node that, after this operation, will be situated before the specified succeeding node.
-	 * @param beforeNode The node before which the provided node will be inserted.
-	 * @return The inserted node.
-	 */
 	public insertNodeBefore(node: DoublyLinkedListNode<E>, beforeNode: DoublyLinkedListNode<E>): DoublyLinkedListNode<E> {
 		
 		if (beforeNode.getParentList() !== this) {
@@ -365,61 +274,30 @@ export class DoublyLinkedList<E = any> extends AbstractList<E> {
 		
 	}
 	
-	/**
-	 * Creates a new node with the provided content and inserts it at the beginning of the list, returning the newly
-	 * created node.
-	 * 
-	 * @param element The content that the newly created node should contain.
-	 * @return The newly created node.
-	 */
 	public insertFirst(element: E): DoublyLinkedListNode<E> {
 		
 		return this.insertAfter(element, this.getPrologueNode());
 		
 	}
 	
-	/**
-	 * Inserts the provided node at the beginning of the list, returning the node that was inserted.
-	 * 
-	 * @param node The node that, after this operation, will be situated at the beginning of this list.
-	 * @return The inserted node.
-	 */
 	public insertNodeFirst(node: DoublyLinkedListNode<E>): DoublyLinkedListNode<E> {
 		
 		return this.insertNodeAfter(node, this.getPrologueNode());
 		
 	}
 	
-	/**
-	 * Creates a new node with the provided content and inserts it at the end of the list, returning the newly created
-	 * node.
-	 * 
-	 * @param element The content that the newly created node should contain.
-	 * @return The newly created node.
-	 */
 	public insertLast(element: E): DoublyLinkedListNode<E> {
 		
 		return this.insertBefore(element, this.getEpilogueNode());
 		
 	}
 	
-	/**
-	 * Inserts the provided node at the end of the list, returning the node that was inserted.
-	 *
-	 * @param node The node that, after this operation, will be situated at the end of this list.
-	 * @return The inserted node.
-	 */
 	public insertNodeLast(node: DoublyLinkedListNode<E>): DoublyLinkedListNode<E> {
 		
 		return this.insertNodeBefore(node, this.getEpilogueNode());
 		
 	}
 	
-	/**
-	 * Removes the first node of the list, returning the removed node's contained element.
-	 * 
-	 * @return The removed node's contained element.
-	 */
 	public removeFirst(): E | undefined {
 		
 		if (this.isEmpty()) return undefined;
@@ -427,11 +305,6 @@ export class DoublyLinkedList<E = any> extends AbstractList<E> {
 		
 	}
 	
-	/**
-	 * Removes the first node of the list, returning the removed node.
-	 * 
-	 * @return The removed node.
-	 */
 	public removeFirstNode(): DoublyLinkedListNode<E> | undefined {
 		
 		if (this.isEmpty()) return undefined;
@@ -439,11 +312,6 @@ export class DoublyLinkedList<E = any> extends AbstractList<E> {
 		
 	}
 	
-	/**
-	 * Removes the last node of the list, returning the removed node's contained element.
-	 *
-	 * @return The removed node's contained element.
-	 */
 	public removeLast(): E | undefined {
 		
 		if (this.isEmpty()) return undefined;
@@ -451,11 +319,6 @@ export class DoublyLinkedList<E = any> extends AbstractList<E> {
 		
 	}
 	
-	/**
-	 * Removes the last node of the list, returning the removed node.
-	 *
-	 * @return The removed node.
-	 */
 	public removeLastNode(): DoublyLinkedListNode<E> | undefined {
 		
 		if (this.isEmpty()) return undefined;
@@ -463,14 +326,6 @@ export class DoublyLinkedList<E = any> extends AbstractList<E> {
 		
 	}
 	
-	/**
-	 * Removes the specified node from the list, returning the removed node.
-	 * 
-	 * This method will throw an error if an attempt is made to use a node that does belong to this list.
-	 * 
-	 * @param node The node that should be removed from the list.
-	 * @return The removed node.
-	 */
 	public removeNode(node: DoublyLinkedListNode<E>): DoublyLinkedListNode<E> {
 		
 		if (node.getParentList() !== this) {
@@ -622,11 +477,6 @@ export class DoublyLinkedList<E = any> extends AbstractList<E> {
 		
 	}
 	
-	/**
-	 * Returns an iterator over the nodes of this list.
-	 *
-	 * @return An iterator over the nodes of this list.
-	 */
 	public nodeIterator(): AbstractIterator<DoublyLinkedListNode<E>> {
 		
 		return new class extends AbstractIterator<DoublyLinkedListNode<E>> {

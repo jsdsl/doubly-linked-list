@@ -5,6 +5,7 @@
  */
 
 import { DoublyLinkedList } from "./doubly-linked-list";
+import { IDoublyLinkedListNode } from "./i-doubly-linked-list-node";
 
 /**
  * A doubly-linked node within a {@link DoublyLinkedList}.
@@ -13,7 +14,7 @@ import { DoublyLinkedList } from "./doubly-linked-list";
  * @version v0.2.0
  * @since v0.1.0
  */
-export class DoublyLinkedListNode<E> {
+export class DoublyLinkedListNode<E> implements IDoublyLinkedListNode<E> {
 	
 	/**
 	 * A reference to the node preceding this node, or undefined if this node has no preceding sibling.
@@ -56,11 +57,6 @@ export class DoublyLinkedListNode<E> {
 		
 	}
 	
-	/**
-	 * Returns the element contained in this node.
-	 * 
-	 * @return The element contained in this node.
-	 */
 	public getElement(): E {
 		
 		if (this.content !== null) return this.content;
@@ -75,34 +71,18 @@ export class DoublyLinkedListNode<E> {
 		
 	}
 	
-	/**
-	 * Returns the {@link DoublyLinkedList} that contains this node.
-	 * 
-	 * @return The DoublyLinkedList that contains this node.
-	 */
 	public getParentList(): DoublyLinkedList<E> {
 		
 		return this.parentList;
 		
 	}
 	
-	/**
-	 * Returns true if this node has a preceding node.
-	 * 
-	 * @return true if this node has a preceding node.
-	 */
 	public hasPreviousNode(): boolean {
 		
 		return (this.previous !== undefined);
 		
 	}
 	
-	/**
-	 * Returns this node's preceding node, or undefined if this node has no preceding sibling.
-	 * 
-	 * @return This node's preceding node, or undefined if this node has no preceding sibling.
-	 * @see DoublyLinkedListNode#hasPreviousNode
-	 */
 	public getPreviousNode(): DoublyLinkedListNode<E> | undefined {
 		
 		if (!this.hasPreviousNode()) return undefined;
@@ -110,13 +90,6 @@ export class DoublyLinkedListNode<E> {
 		
 	}
 	
-	/**
-	 * Sets the preceding node for this node, returning the node displaced as this node's preceding sibling, or
-	 * undefined if this node had no preceding sibling.
-	 * 
-	 * @param previousNode The node to set as this node's preceding sibling.
-	 * @return DOC-ME
-	 */
 	public setPreviousNode(previousNode: DoublyLinkedListNode<E> | undefined): DoublyLinkedListNode<E> | undefined {
 		
 		let displaced: DoublyLinkedListNode<E> | undefined = this.previous;
@@ -125,23 +98,12 @@ export class DoublyLinkedListNode<E> {
 		
 	}
 	
-	/**
-	 * Returns true if this node has a successive node.
-	 *
-	 * @return true if this node has a successive node.
-	 */
 	public hasNextNode(): boolean {
 		
 		return (this.next !== undefined);
 		
 	}
 	
-	/**
-	 * Returns this node's succeeding node, or undefined if this node has no successive sibling.
-	 *
-	 * @return This node's succeeding node, or undefined if this node has no successive sibling.
-	 * @see DoublyLinkedListNode#hasNextNode
-	 */
 	public getNextNode(): DoublyLinkedListNode<E> | undefined {
 		
 		if (!this.hasNextNode()) return undefined;
@@ -149,12 +111,6 @@ export class DoublyLinkedListNode<E> {
 		
 	}
 	
-	/**
-	 * Sets the succeeding node for this node, returning the node displaced as this node's succeeding sibling, or
-	 * undefined if this node had no successive sibling.
-	 * 
-	 * @param nextNode The node to set as this node's successive sibling.
-	 */
 	public setNextNode(nextNode: DoublyLinkedListNode<E> | undefined): DoublyLinkedListNode<E> | undefined {
 		
 		let displaced: DoublyLinkedListNode<E> | undefined = this.next;

@@ -1,7 +1,8 @@
 import { AbstractList } from "@jsdsl/abstract-list";
 import { DoublyLinkedListNode } from "./doubly-linked-list-node";
 import { AbstractIterator } from "iter-over";
-export declare class DoublyLinkedList<E = any> extends AbstractList<E> {
+import { IDoublyLinkedList } from "./i-doubly-linked-list";
+export declare class DoublyLinkedList<E = any> extends AbstractList<E> implements IDoublyLinkedList<E> {
     private prologue;
     private epilogue;
     constructor(...elements: E[]);

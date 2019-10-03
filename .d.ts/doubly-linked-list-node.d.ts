@@ -1,5 +1,6 @@
 import { DoublyLinkedList } from "./doubly-linked-list";
-export declare class DoublyLinkedListNode<E> {
+import { IDoublyLinkedListNode } from "./i-doubly-linked-list-node";
+export declare class DoublyLinkedListNode<E> implements IDoublyLinkedListNode<E> {
     private previous;
     private next;
     private parentList;
